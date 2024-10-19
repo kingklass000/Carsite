@@ -1,8 +1,9 @@
+from django.contrib.auth.models import AbstractUser
 from django.db import models
 from phonenumber_field.modelfields import PhoneNumberField
 
 
-class UserProfile(models.Model):
+class UserProfile(AbstractUser):
     age = models.PositiveSmallIntegerField(default=0, null=True, blank=True)
     date_registered = models.DateField(auto_now=True, null=True, blank=True)
     phone_number = PhoneNumberField(region='KG', null=True, blank=True)
@@ -18,6 +19,7 @@ class UserProfile(models.Model):
 
 
 class Category(models.Model):
+    category_name = models.CharField(max_length=16, unique=True)
     model_name = models.CharField(max_length=16, unique=True)
     marca_name = models.CharField(max_length=16, unique=True)
 
@@ -30,7 +32,7 @@ class Car(models.Model):
     description = models.TextField()
     price = models.DecimalField(max_digits=10, decimal_places=2)
     category = models.ForeignKey(Category, related_name='car', on_delete=models.CASCADE)
-    year = models.CharField(max_length=10)
+    year = models.DateField(max_length=10)
     active = models.BooleanField(default=True, verbose_name='в наличий')
     product_video = models.FileField(verbose_name='видео', null=True, blank=True)
     body = models.CharField(max_length=32)  #кузов

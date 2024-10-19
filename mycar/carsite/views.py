@@ -1,5 +1,5 @@
 from rest_framework import viewsets, permissions, generics, status
-from .serializers import *
+from .serializer import *
 from .models import *
 from django_filters.rest_framework import DjangoFilterBackend
 from .filter import ProductFilter
@@ -7,7 +7,7 @@ from rest_framework.filters import SearchFilter, OrderingFilter
 from rest_framework.response import Response
 from rest_framework_simplejwt.views import TokenObtainPairView
 from rest_framework_simplejwt.tokens import RefreshToken
-from .permissions import CheckOwner
+from .permission import CheckOwner
 
 
 class RegisterView(generics.CreateAPIView):
