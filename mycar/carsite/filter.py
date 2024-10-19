@@ -8,5 +8,7 @@ class ProductFilter(FilterSet):
         fields = {
             'category': ['exact'],
             'active': ['exact'],
+            'model_name': ['exact'],
+            'marca_name': ['exact'],
             'price': ['gt', 'lt']
         }
