@@ -22,7 +22,7 @@ class Category(models.Model):
     category_name = models.CharField(max_length=16, unique=True)
 
     def __str__(self):
-        return f'{self.model_name} - {self.marca_name}'
+        return self.category_name
 
 
 class Car(models.Model):
@@ -30,7 +30,7 @@ class Car(models.Model):
     description = models.TextField()
     price = models.DecimalField(max_digits=10, decimal_places=2)
     category = models.ForeignKey(Category, related_name='car', on_delete=models.CASCADE)
-    year = models.DateField(max_length=10)
+    year = models.CharField(max_length=10)
     active = models.BooleanField(default=True, verbose_name='в наличий')
     product_video = models.FileField(verbose_name='видео', null=True, blank=True)
     body = models.CharField(max_length=32)  #кузов
