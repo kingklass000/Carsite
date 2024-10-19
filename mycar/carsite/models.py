@@ -20,8 +20,6 @@ class UserProfile(AbstractUser):
 
 class Category(models.Model):
     category_name = models.CharField(max_length=16, unique=True)
-    model_name = models.CharField(max_length=16, unique=True)
-    marca_name = models.CharField(max_length=16, unique=True)
 
     def __str__(self):
         return f'{self.model_name} - {self.marca_name}'
@@ -42,6 +40,8 @@ class Car(models.Model):
     drive = models.CharField(max_length=32)  #привод
     fuel_consumption = models.CharField(max_length=32)  #расход топлива
     acceleration = models.CharField(max_length=32)  #разгон
+    model_name = models.CharField(max_length=16, unique=True)
+    marca_name = models.CharField(max_length=16, unique=True)
 
     def __str__(self):
         return self.car_name
